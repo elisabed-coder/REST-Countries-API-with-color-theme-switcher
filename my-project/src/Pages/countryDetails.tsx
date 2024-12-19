@@ -1,31 +1,31 @@
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Country from "../Interface/country.interface";
 
 function CountryDetails() {
-  const [countries, setCountries] = useState<Country[]>([]);
+  const { id } = useParams<{ id: string }>();
+  const [country, setCountry] = useState<any>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("https://restcountries.com/v3.1/all");
+    const fetchCountry = async () => {
+      const res = await fetch(`https://restcountries.com/v3.1/alpha/${id}`);
       const data = await res.json();
-      setCountries(data);
+      setCountry(data[0]);
     };
 
-    fetchData();
-  }, []);
+    fetchCountry();
+  }, [id]);
+
+  if (!country) return <div>Loading...</div>;
 
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <ul>
-        {countries.map((d) => (
-          <li key={d.ccn3 || d.cca3}>
-            {" "}
-            <a href={`/country/${d.ccn3}`}>{d.name.common}</a>
-          </li>
-        ))}
-      </ul>
-    </>
+    <div>
+      <h1>{country.name.common}</h1>
+      <p>Region: {country.region}</p>
+      <p>Population: {country.population}</p>
+      <p>Capital: {country.capital && country.capital[0]}</p>
+      <img src={country.flags.png} alt={`Flag of ${country.name.common}`} />
+    </div>
   );
 }
+
 export default CountryDetails;
