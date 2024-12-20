@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { IoArrowBack } from "react-icons/io5";
 
 function CountryDetails() {
   const { id } = useParams<{ id: string }>();
@@ -29,12 +30,22 @@ function CountryDetails() {
   if (!country) return <div>Loading...</div>;
 
   return (
-    <div>
-      <h1>{country.name.common}</h1>
-      <p>Region: {country.region}</p>
-      <p>Population: {country.population}</p>
-      <p>Capital: {country.capital ? country.capital[0] : "Not Available"}</p>
-      <img src={country.flags.png} alt={`Flag of ${country.name.common}`} />
+    <div className="p-4 md:px-16 md-pt-16 ">
+      <button className="animated_button local_shadow">
+        <IoArrowBack />
+        Back
+      </button>
+      <div>
+        <img src={country.flags.png} alt={`Flag of ${country.name.common}`} />
+        <div>
+          <h1>{country.name.common}</h1>
+          <p>Region: {country.region}</p>
+          <p>Population: {country.population}</p>
+          <p>
+            Capital: {country.capital ? country.capital[0] : "Not Available"}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

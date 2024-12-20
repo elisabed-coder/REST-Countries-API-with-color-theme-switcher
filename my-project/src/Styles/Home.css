@@ -9,3 +9,11 @@
 .country-info-text {
   @apply text-sm text-gray-700 dark:text-gray-400 mb-1;
 }
+
+.animated_button {
+  @apply px-4 py-2 text-lg  cursor-pointer font-bold gap-2 rounded-lg  transition-transform duration-300 flex  items-center justify-center hover:scale-105 hover:bg-gray-200 dark:hover:bg-gray-800;
+}
+
+.animated_button.local_shadow {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.24);
+}
