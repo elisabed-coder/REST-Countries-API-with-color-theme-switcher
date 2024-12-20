@@ -16,4 +16,5 @@
 
 .animated_button.local_shadow {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.24);
+  @apply dark:bg-[#2b3945];
 }

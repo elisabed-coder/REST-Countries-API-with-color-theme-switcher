@@ -5,7 +5,7 @@ const Header = () => {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <header className="sticky top-0 z-[20] mx-auto w-full flex items-center justify-between flex-row min:flex-col p-4 md:px-16-custom-dark min-h-[10vh] bg-white dark:bg-[#2b3945] shadow-custom-dark">
+    <header className="sticky top-0 z-[20] mx-auto w-full flex items-center justify-between flex-col min:flex-row p-4 md:px-16-custom-dark min-h-[10vh] bg-white dark:bg-[#2b3945] shadow-custom-dark">
       <h1
         className="text-xl sm:text-2xl md:text-3xl font-bold 
       "
