@@ -1,17 +1,21 @@
 import { useDarkMode } from "../context/DarkModeContext";
 import { IoMoonOutline, IoMoonSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
     <header className="sticky top-0 z-[20] mx-auto w-full flex items-center justify-between flex-col min:flex-row p-4 md:px-16-custom-dark min-h-[10vh] bg-white dark:bg-[#2b3945] shadow-custom-dark">
-      <h1
-        className="text-xl sm:text-2xl md:text-3xl font-bold 
+      <Link to="/">
+        <h1
+          className="text-xl sm:text-2xl md:text-3xl font-bold 
       "
-      >
-        Where in the world?
-      </h1>{" "}
+        >
+          Where in the world?
+        </h1>{" "}
+      </Link>
+
       <div onClick={toggleDarkMode} className="animated_button">
         {isDarkMode ? <IoMoonSharp /> : <IoMoonOutline />}
         <p className=" transition-transform duration-300 hover:scale-105 hover:bg-gray-200 dark:hover:bg-gray-800">
