@@ -10,7 +10,7 @@ const AppLayout = () => {
   return (
     <div
       className={`w-full h-full min-h-screen transition-colors duration-500 ${
-        isDarkMode ? "bg-black text-white" : "bg-white text-black"
+        isDarkMode ? "bg-[#202c37] text-white" : "bg-white text-black"
       }`}
     >
       <Header />

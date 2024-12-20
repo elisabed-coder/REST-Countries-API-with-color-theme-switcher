@@ -54,8 +54,8 @@ function Home() {
   };
 
   return (
-    <div className="px-4 md:px-16">
-      <div className="flex justify-between">
+    <div className="px-4 md:px-16 pb-6">
+      <div className="flex justify-between flex-col md:flex-row">
         <SearchInput
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
@@ -71,19 +71,19 @@ function Home() {
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          className="pagination-button"
         >
           <IoIosArrowBack />
         </button>
 
-        <span className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+        <span className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white">
           {currentPage}
         </span>
 
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          className="pagination-button"
         >
           <IoIosArrowForward />
         </button>
@@ -91,10 +91,7 @@ function Home() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
         {currentCountries.map((d) => (
-          <div
-            key={d.ccn3 || d.cca3}
-            className="transform max-w-sm bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700 transition duration-300 hover:scale-105"
-          >
+          <div key={d.ccn3 || d.cca3} className="country-card">
             <a href={`/country/${d.ccn3 || d.cca3}`}>
               <img
                 className="rounded-t-lg w-full h-48 object-cover"
@@ -108,13 +105,13 @@ function Home() {
                   {d.name.common}
                 </h5>
               </a>
-              <p className="text-sm text-gray-700 dark:text-gray-400 mb-1">
+              <p className="country-info-text">
                 <strong>Population:</strong> {d.population.toLocaleString()}
               </p>
-              <p className="text-sm text-gray-700 dark:text-gray-400 mb-1">
+              <p className="country-info-text">
                 <strong>Region:</strong> {d.region}
               </p>
-              <p className="text-sm text-gray-700 dark:text-gray-400 mb-3">
+              <p className="country-info-text mb-3">
                 <strong>Capital:</strong> {d.capital ? d.capital[0] : "N/A"}
               </p>
             </div>
