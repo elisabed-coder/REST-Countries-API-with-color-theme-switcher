@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import CountryDetails from "./Pages/CountryDetails";
-import Home from "./Pages/Home";
-import Header from "./Pages/Header";
+import CountryDetails from "./Components/CountryDetails";
+import Home from "./Components/Home";
+import Header from "./Components/Header";
 import { DarkModeProvider, useDarkMode } from "./context/DarkModeContext";
 
 const AppLayout = () => {

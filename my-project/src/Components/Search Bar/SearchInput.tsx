@@ -1,4 +1,4 @@
-import { SearchInputProps } from "../Interface/SearchInputProps";
+import { SearchInputProps } from "../../Interface/SearchInputProps";
 import { IoIosSearch } from "react-icons/io";
 
 const SearchInput: React.FC<SearchInputProps> = ({

@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { Country } from "../Interface/country.interface";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import SearchInput from "./SearchInput"; // Import the new component
+import SearchInput from "./Search Bar/SearchInput";
+import RegionFilter from "./Search Bar/RegionFilters";
 import "../styles/Home.css";
 
 function Home() {
   const [countries, setCountries] = useState<Country[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState<string>("");
   const countriesPerPage = 8;
 
   useEffect(() => {
@@ -20,12 +22,17 @@ function Home() {
     fetchData();
   }, []);
 
-  // Filter countries based on search query
-  const filteredCountries = countries.filter((country) =>
-    country.name.common.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredCountries = countries
+    .filter((country) =>
+      country.name.common.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .filter((country) => {
+      if (selectedRegion) {
+        return country.region.toLowerCase() === selectedRegion.toLowerCase();
+      }
+      return true;
+    });
 
-  // Calculate the countries to display on the current page
   const indexOfLastCountry = currentPage * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
   const currentCountries = filteredCountries.slice(
@@ -41,12 +48,25 @@ function Home() {
   // Total pages
   const totalPages = Math.ceil(filteredCountries.length / countriesPerPage);
 
+  const handleRegionChange = (region: string) => {
+    setSelectedRegion(region);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="px-4 md:px-16">
-      {/* Search Input Component */}
-      <SearchInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <div className="flex justify-between">
+        <SearchInput
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
 
-      {/* Pagination Controls */}
+        <RegionFilter
+          selectedRegion={selectedRegion}
+          onRegionChange={handleRegionChange}
+        />
+      </div>
+
       <div className="flex justify-end mt-6 ">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
@@ -69,7 +89,6 @@ function Home() {
         </button>
       </div>
 
-      {/* Countries Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
         {currentCountries.map((d) => (
           <div
