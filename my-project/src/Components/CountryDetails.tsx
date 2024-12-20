@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { Country } from "../Interface/country.interface";
@@ -32,10 +32,13 @@ function CountryDetails() {
 
   return (
     <div className="p-4 md:px-16 md:pt-16">
-      <button className="animated_button local_shadow">
-        <IoArrowBack />
-        Back
-      </button>
+      <Link to="/">
+        <button className="animated_button local_shadow">
+          <IoArrowBack />
+          Back
+        </button>
+      </Link>
+
       <div className="flex items-center justify-center flex-col lg:flex-row pt-10">
         {/* <div className="w-6/12 h-full"> */}
         <img
