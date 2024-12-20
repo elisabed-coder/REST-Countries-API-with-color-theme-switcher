@@ -93,7 +93,7 @@ function Home() {
         {currentCountries.map((d) => (
           <div
             key={d.ccn3 || d.cca3}
-            className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+            className="transform max-w-sm bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700 transition duration-300 hover:scale-105"
           >
             <a href={`/country/${d.ccn3 || d.cca3}`}>
               <img
