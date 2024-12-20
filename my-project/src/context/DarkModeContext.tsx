@@ -16,29 +16,18 @@ const DarkModeContext = createContext<DarkModeContextProps | undefined>(
 );
 
 export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-
-  // Check if dark mode is stored in localStorage when the component mounts
-  useEffect(() => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedDarkMode = localStorage.getItem("darkMode");
-    if (savedDarkMode) {
-      setIsDarkMode(JSON.parse(savedDarkMode));
-    }
-  }, []);
+    return savedDarkMode ? JSON.parse(savedDarkMode) : false;
+  });
 
-  // Apply dark mode class to <html> element
   useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    // Persist dark mode preference in localStorage
     localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
+    document.documentElement.classList.toggle("dark", isDarkMode);
   }, [isDarkMode]);
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
+    setIsDarkMode((prev: boolean) => !prev);
   };
 
   return (
