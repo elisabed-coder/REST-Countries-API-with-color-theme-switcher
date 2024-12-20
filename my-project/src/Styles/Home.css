@@ -3,7 +3,7 @@
 }
 
 .country-card {
-  @apply transform max-w-sm bg-white border border-gray-200 rounded-lg shadow-custom-dark dark:bg-[#2b3945] dark:border-none transition duration-300 hover:scale-105;
+  @apply transform max-w-sm bg-white border border-gray-200 rounded-lg shadow-custom-dark dark:bg-[#2b3945] dark:border-none transition duration-500 hover:scale-105;
 }
 
 .country-info-text {
