@@ -3,7 +3,6 @@ import { Country } from "../Interface/country.interface";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import SearchInput from "./Search Bar/SearchInput";
 import RegionFilter from "./Search Bar/RegionFilters";
-import "../styles/Home.css";
 
 function Home() {
   const [countries, setCountries] = useState<Country[]>([]);
