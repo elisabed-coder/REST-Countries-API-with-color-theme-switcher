@@ -18,7 +18,7 @@ const Header = () => {
 
       <div className="animated_button local_shadow" onClick={toggleDarkMode}>
         {isDarkMode ? <IoMoonSharp /> : <IoMoonOutline />}
-        <p className=" transition-transform duration-300 hover:scale-105 hover:bg-gray-200 dark:hover:bg-gray-800">
+        <p className=" transition-transform duration-300 hover:scale-105">
           {isDarkMode ? "Light Mode" : "Dark Mode"}
         </p>
       </div>
