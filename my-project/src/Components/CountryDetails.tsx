@@ -44,7 +44,7 @@ function CountryDetails() {
         <img
           src={country.flags.svg}
           alt={`Flag of ${country.name.common}`}
-          className="sm:w-10/12 lg:w-6/12  h-full"
+          className="sm:w-10/12 lg:w-4/12  h-full"
         />
 
         <div className="sm:w-10/12 lg:w-6/12 pt-10 lg:pl-5 pb-22">

@@ -4,7 +4,8 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import SearchInput from "./Search Bar/SearchInput";
 import RegionFilter from "./Search Bar/RegionFilters";
 import Loader from "./Loader";
-import "../Styles/Home.css";
+import "../styles/global.css";
+import { motion } from "framer-motion";
 
 function Home() {
   const [countries, setCountries] = useState<Country[]>([]);
@@ -50,7 +51,11 @@ function Home() {
   );
 
   const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
+    if (pageNumber !== currentPage) {
+      setTimeout(() => {
+        setCurrentPage(pageNumber);
+      }, 300);
+    }
   };
 
   const totalPages = Math.ceil(filteredCountries.length / countriesPerPage);
@@ -61,7 +66,7 @@ function Home() {
   };
 
   return (
-    <div className="px-4 md:px-16 pb-6">
+    <div className="px-4 md:px-16 pb-6 ">
       {loading ? (
         <Loader />
       ) : (
@@ -96,8 +101,13 @@ function Home() {
               <IoIosArrowForward />
             </button>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4"
+          >
             {currentCountries.map((d) => (
               <div key={d.ccn3 || d.cca3} className="country-card">
                 <a href={`/country/${d.ccn3 || d.cca3}`}>
@@ -125,7 +135,7 @@ function Home() {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </>
       )}
     </div>
