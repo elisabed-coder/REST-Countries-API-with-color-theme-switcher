@@ -44,9 +44,8 @@ function CountryDetails() {
         <img
           src={country.flags.svg}
           alt={`Flag of ${country.name.common}`}
-          className="sm:w-10/12 lg:w-4/12  h-full"
+          className="sm:w-10/12 lg:w-6/12 h-full"
         />
-
         <div className="sm:w-10/12 lg:w-6/12 pt-10 lg:pl-5 pb-22">
           <h1 className="text-2xl font-extrabold">{country.name.common}</h1>
           <div className="md:flex flex-row justify-between my-6 mb-16 leading-[25px] ">
@@ -58,7 +57,8 @@ function CountryDetails() {
                   .join(", ")}
               </p>
               <p>
-                <strong>Population:</strong> {country.population}
+                <strong>Population:</strong>{" "}
+                {country.population.toLocaleString()}
               </p>
               <p>
                 <strong>Region:</strong> {country.region}
@@ -88,12 +88,23 @@ function CountryDetails() {
               </p>
             </div>
           </div>
-          <p>
+          <div className="lg:flex items-baseline gap-1">
             <strong>Border Countries:</strong>{" "}
-            {country.borders
-              ? country.borders.join(", ")
-              : `${country.name.common} has no border countries`}
-          </p>
+            <div className="flex flex-wrap gap-2 mt-2">
+              {country.borders ? (
+                country.borders.map((border) => (
+                  <div
+                    key={border}
+                    className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-md text-sm text-gray-700 dark:text-gray-300"
+                  >
+                    {border}
+                  </div>
+                ))
+              ) : (
+                <div>{`${country.name.common} has no border countries`}</div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
