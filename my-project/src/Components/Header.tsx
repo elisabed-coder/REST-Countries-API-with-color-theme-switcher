@@ -6,7 +6,7 @@ const Header = () => {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <header className="sticky top-0 z-[20] mx-auto w-full flex items-center justify-between flex-col min:flex-row p-4 md:px-16-custom-dark min-h-[10vh] bg-white dark:bg-[#2b3945] shadow-custom-dark">
+    <header className="sticky top-0 z-[20] mx-auto w-full flex items-center justify-between flex-col lg:flex-row p-4 md:px-16-custom-dark min-h-[10vh] bg-white dark:bg-[#2b3945] shadow-custom-dark">
       <Link to="/">
         <h1
           className="text-xl sm:text-2xl md:text-3xl font-bold 
@@ -16,7 +16,7 @@ const Header = () => {
         </h1>{" "}
       </Link>
 
-      <div onClick={toggleDarkMode} className="animated_button">
+      <div className="animated_button local_shadow" onClick={toggleDarkMode}>
         {isDarkMode ? <IoMoonSharp /> : <IoMoonOutline />}
         <p className=" transition-transform duration-300 hover:scale-105 hover:bg-gray-200 dark:hover:bg-gray-800">
           {isDarkMode ? "Light Mode" : "Dark Mode"}
