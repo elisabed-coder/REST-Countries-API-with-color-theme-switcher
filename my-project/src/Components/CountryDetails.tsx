@@ -36,7 +36,7 @@ function CountryDetails() {
       <Link to="/">
         <button className="animated_button local_shadow">
           <IoArrowBack />
-          Back
+          <span>Back</span>
         </button>
       </Link>
 
