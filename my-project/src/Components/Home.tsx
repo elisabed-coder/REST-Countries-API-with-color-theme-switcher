@@ -87,6 +87,7 @@ function Home() {
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
               className="pagination-button"
+              aria-label="Previous page"
             >
               <IoIosArrowBack />
             </button>
@@ -97,6 +98,7 @@ function Home() {
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
               className="pagination-button"
+              aria-label="Next page"
             >
               <IoIosArrowForward />
             </button>
