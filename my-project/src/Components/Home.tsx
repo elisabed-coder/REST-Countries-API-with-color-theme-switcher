@@ -66,7 +66,7 @@ function Home() {
   };
 
   return (
-    <div className="px-4 md:px-16 pb-6 ">
+    <main className="px-4 md:px-16 pb-6 ">
       {loading ? (
         <Loader />
       ) : (
@@ -138,7 +138,7 @@ function Home() {
           </motion.div>
         </>
       )}
-    </div>
+    </main>
   );
 }
 

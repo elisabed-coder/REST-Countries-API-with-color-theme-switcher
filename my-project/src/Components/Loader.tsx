@@ -1,6 +1,6 @@
 const Loader = () => {
   return (
-    <div>
+    <section>
       <div className="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
         <svg
           className="w-16 h-16 animate-spin text-gray-900/50 dark:text-white/50"
@@ -27,7 +27,7 @@ const Loader = () => {
           ></path>
         </svg>
       </div>
-    </div>
+    </section>
   );
 };
 

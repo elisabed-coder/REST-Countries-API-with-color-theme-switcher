@@ -22,7 +22,7 @@ const RegionFilter: React.FC<RegionFilterProps> = ({
   ];
 
   return (
-    <div className="relative mt-6 w-48">
+    <section className="relative mt-6 w-48">
       <button
         onClick={() => setOpen((prev) => !prev)}
         className="w-full flex items-center justify-between px-5 py-4 shadow-[0_7px_29px_0_rgba(100,100,111,.2)] bg-white dark:bg-[rgb(43,57,69)] dark:shadow-md dark:text-white rounded-md text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
@@ -59,7 +59,7 @@ const RegionFilter: React.FC<RegionFilterProps> = ({
           </motion.li>
         ))}
       </motion.ul>
-    </div>
+    </section>
   );
 };
 

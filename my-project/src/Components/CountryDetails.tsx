@@ -32,7 +32,7 @@ function CountryDetails() {
   if (!country) return <Loader />;
 
   return (
-    <div className="p-4 md:px-16 md:pt-16">
+    <section className="p-4 md:px-16 md:pt-16">
       <Link to="/">
         <button className="animated_button local_shadow">
           <IoArrowBack />
@@ -107,7 +107,7 @@ function CountryDetails() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
